@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router} from "@angular/router";
 
 @Component({
   selector: 'app-hub',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HubComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
+  test(){
+    let path = "pantry";
+    this.router.navigate([path]);
+  }
 }

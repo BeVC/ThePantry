@@ -5,7 +5,7 @@ import { HubComponent } from './ui/hub/hub.component';
 import { PantryModule } from "../pantry/pantry.module";
 
 import { HubRoutingModule } from "./hub-routing.module";
-import { NavbarComponent } from './ui/navbar/navbar.component';
+
 
 @NgModule({
   imports: [
@@ -14,8 +14,7 @@ import { NavbarComponent } from './ui/navbar/navbar.component';
     HubRoutingModule
   ],
   declarations: [
-    HubComponent,
-    NavbarComponent
+    HubComponent
   ]
 })
 export class HubModule { }
