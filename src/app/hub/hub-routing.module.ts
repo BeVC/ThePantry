@@ -5,13 +5,14 @@ import { HubComponent } from "./ui/hub/hub.component";
 
 const hubRoutes: Routes = [
     {
-        path: "hub", component: HubComponent
+        path: "hub", 
+        component: HubComponent        
     }
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forChild(hubRoutes)
+        RouterModule.forChild(hubRoutes)        
     ],
     exports: [
         RouterModule
