@@ -4,15 +4,24 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginModule } from "./login/login.module";
+import { HubModule } from "./hub/hub.module";
+
+import { PageNotFoundComponent } from './not-found.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    LoginModule,
+    HubModule,
+    AppRoutingModule
+  ],
+  declarations: [
+    AppComponent,
+    PageNotFoundComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
