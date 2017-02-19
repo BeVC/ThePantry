@@ -1,3 +1,21 @@
-<p>
-  login works!
-</p>
+<form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+	<div class="form-group" [class.item-error]="formErrors.email">
+		<label for="email">Enter your email-address</label>
+		<input type="email" id="email" name="email" [(ngModel)]="email" required />
+		<div class="error" *ngIf="formErrors.email">
+			{{ formErrors.email}}
+		</div>
+	</div>
+
+
+	<div class="form-group" [class.item-error]="formErrors.password">
+		<label for="password">Enter your password</label>
+		<input type="password" id="password" name="password" [(ngModel)]="password" required />
+		<div class="error" *ngIf="formErrors.password">
+			{{ formErrors.password}}
+		</div>
+	</div>
+
+	<!--<button type="submit" class="button login" [class.disabled]="!loginForm.form.valid" [disabled]="!loginForm.form.valid">Login</button>-->
+	<button type="button" class="button login" (click)="uiOnLoginFakeClicked()">Login Fake</button>
+</form>

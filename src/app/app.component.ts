@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
 })
 export class AppComponent {
   title = 'app works!';
-  loggedIn: boolean = true;
+  loggedIn: boolean = false;
 
   constructor(
     private router: Router
