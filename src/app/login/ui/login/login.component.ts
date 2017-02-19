@@ -68,10 +68,23 @@ export class LoginComponent implements OnInit {
         error;
       })*/
 
-      this.loginService.test(this.email, this.password)
+    this.loginService.getUser(this.email, this.password)
       .subscribe(response => {
-        response;
-      })
+        if (response.ok) {
+          let user: User;
+          if (response.data && response.data.length == 1) {
+            user = response.data[0];
+            this.userBroker.setUser(user);
+            if(user){
+              console.log("log faked");
+              let path = "/hub";
+              this.router.navigate([path]);
+            }
+          }
+        } 
+      }, error =>{
+        error;
+      });
   }
   //#endregion
 

@@ -10,6 +10,7 @@ import "rxjs/Rx";
 
 // MODELS
 import { User } from '../../models/user';
+import {Apiresponse} from "../../models/apiresponse"
 
 @Injectable()
 export class LoginService {
@@ -26,11 +27,11 @@ export class LoginService {
       .catch(this.handleError);
   }
 
-  test(email:string, password: string):Observable<User[]>{
+  getUser(email:string, password: string):Observable<Apiresponse<any[]>>{
     let url = `${this.usersUrl}?email=${email}&password=${password}`
     return this.http.get(url)
     .map((response)=>{
-      return response;
+      return this.mapToApiResponse(response);
     })
     .do(response =>{
       response;
@@ -61,5 +62,16 @@ export class LoginService {
     }
     console.error(errMsg);
     return Observable.throw(errMsg);
+  }
+
+  private mapToApiResponse<T>(response: Response): Apiresponse<T>{
+    let retour = new Apiresponse<T>();
+
+    retour.ok = response.ok;
+    retour.status = response.status;
+    retour.statusText = response.statusText;
+    retour.data = response["_body"].data;
+
+    return retour;
   }
 }
