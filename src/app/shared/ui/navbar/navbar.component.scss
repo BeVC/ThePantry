@@ -1,0 +1,29 @@
+@import "../../../../styles";
+
+app-navbar {
+    .navbar {
+        height: rem-calc(50);
+        background: lawngreen;
+
+        .home{
+            height: 100%;
+            width: rem-calc(50);
+            border-right: 1px solid grey;
+            float:left;
+
+            .fa-home {
+                margin-left: rem-calc(15);
+                margin-top: rem-calc(15);
+            }
+        }
+
+        .user-menu {
+            float: right;
+            width:10%;
+            border-left: 1px solid grey;
+            height: rem-calc(50);
+            text-align: center;
+            line-height: rem-calc(50);
+        }
+    }
+}
