@@ -6,6 +6,9 @@ import { Router } from "@angular/router";
 // RXJS
 import { Subscription } from "rxjs";
 
+// BROKER
+import { UserBroker } from "../../../broker/user.service";
+
 // MODEL
 import { User } from "../../../models/user";
 //#endregion
@@ -24,6 +27,7 @@ export class NavbarComponent implements OnInit, OnChanges {
 
   constructor(
     private router: Router,
+    private userBroker: UserBroker
   ) { }
 
   //#region Angular Events
@@ -44,7 +48,13 @@ export class NavbarComponent implements OnInit, OnChanges {
 
   //#region UI Events
   uiOnReturnToHubClicked() {
-    let path: "/hub";
+    let path:string = "/hub";
+    this.router.navigate([path]);
+  }
+
+  uiOnLogoutClicked(){
+    this.userBroker.setUser(undefined);
+    let path: string = "/login";
     this.router.navigate([path]);
   }
   //#endregion

@@ -21,7 +21,7 @@ import { User } from "./models/user"
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  title = 'app works!';
+  title: string = 'app works!';
   loggedIn: boolean = false;
   user: User;
 
