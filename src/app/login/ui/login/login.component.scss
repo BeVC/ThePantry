@@ -1,0 +1,42 @@
+@import "../../../../styles";
+
+app-login {
+    @include page();
+
+    background-color: lightgrey;
+    height: 100%;    
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+
+    form {
+        background-color: white;
+        width: rem-calc(300);
+        height: rem-calc(300);
+        left: calc(50% - #{rem-calc(150)});
+        top: calc(50% - #{rem-calc(150)});
+        position:relative;        
+    }
+    &:after{
+        @include clearfix();
+    }
+
+    .form-group{
+        display: inline-block;
+        text-align: center;
+
+        label{
+            line-height: rem-calc(35);
+            font-size: rem-calc(18);
+            font-weight: bold;
+        }
+    }
+
+    .login {
+        width: 20%;
+        margin-left: 40%;
+        margin-top: rem-calc(40);       
+    }
+
+}

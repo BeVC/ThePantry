@@ -4,6 +4,7 @@ import { Injectable, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 
 // RXJS
 import { Observable } from "rxjs/Observable";
+import "rxjs/Rx";
 
 // MODELS
 import { User } from "../models/user";
