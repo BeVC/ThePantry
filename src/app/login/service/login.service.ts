@@ -15,8 +15,8 @@ import {Apiresponse} from "../../models/apiresponse"
 @Injectable()
 export class LoginService {
 
-  private usersUrl = "app/users";
-
+  //private usersUrl = "app/users";
+private usersUrl = "http://localhost:4800/api/users";
   constructor(
     private http: Http
   ) { }

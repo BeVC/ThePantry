@@ -30,7 +30,7 @@ import { UserBroker } from "./broker/user.service";
     BrowserModule,
     FormsModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    //InMemoryWebApiModule.forRoot(InMemoryDataService),
     SharedModule,
     LoginModule,
     HubModule,
