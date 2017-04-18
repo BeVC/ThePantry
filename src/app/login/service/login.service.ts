@@ -27,8 +27,9 @@ private usersUrl = "http://localhost:4800/api/users";
       .catch(this.handleError);
   }
 
-  getUser(email:string, password: string):Observable<Apiresponse<any[]>>{
-    let url = `${this.usersUrl}?email=${email}&password=${password}`
+  getUser(email:string, password: string):Observable<Apiresponse<any>>{
+    //let url = `${this.usersUrl}?email=${email}&password=${password}`
+    let url = this.usersUrl + "/" + email + "/"+password;
     return this.http.get(url)
     .map((response)=>{
       return this.mapToApiResponse(response);
@@ -70,7 +71,9 @@ private usersUrl = "http://localhost:4800/api/users";
     retour.ok = response.ok;
     retour.status = response.status;
     retour.statusText = response.statusText;
-    retour.data = response["_body"].data;
+
+
+    retour.data =  JSON.parse(response["_body"]);
 
     return retour;
   }

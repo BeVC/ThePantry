@@ -72,8 +72,8 @@ export class LoginComponent implements OnInit {
       .subscribe(response => {
         if (response.ok) {
           let user: User;
-          if (response.data && response.data.length == 1) {
-            user = response.data[0];
+          if (response.data) {
+            user = response.data;
             this.userBroker.setUser(user);
             if (user) {
               console.log("log faked");
