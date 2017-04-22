@@ -8,36 +8,46 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 import "rxjs/Rx";
 
+// SERVICE
+import { ApiService } from "../../shared/service/api.service"
+
 // MODELS
 import { User } from '../../models/user';
-import {Apiresponse} from "../../models/apiresponse"
+import { Apiresponse } from "../../models/apiresponse"
 
 @Injectable()
 export class LoginService {
 
   //private usersUrl = "app/users";
-private usersUrl = "http://localhost:4800/api/users";
+  private usersUrl = "http://localhost:4800/api/users";
   constructor(
-    private http: Http
+    private http: Http,
+    private api: ApiService
   ) { }
 
-  getUsers(): Observable<User[]> {
-    return this.http.get(this.usersUrl)
+  getUsers(): Observable<Apiresponse<User[]>> {
+    /*return this.http.get(this.usersUrl)
       .map(this.extractData)
-      .catch(this.handleError);
+      .catch(this.handleError);*/
+    let path = "users";
+    return this.api.getAsync<User[]>(path);
+
   }
 
-  getUser(email:string, password: string):Observable<Apiresponse<any>>{
+  getUser(email: string, password: string): Observable<Apiresponse<User>> {
     //let url = `${this.usersUrl}?email=${email}&password=${password}`
-    let url = this.usersUrl + "/" + email + "/"+password;
+    /*let url = this.usersUrl + "/" + email + "/" + password;
     return this.http.get(url)
-    .map((response)=>{
-      return this.mapToApiResponse(response);
-    })
-    .do(response =>{
-      response;
-    })
-    .catch(this.handleError)
+      .map((response) => {
+        return this.mapToApiResponse(response);
+      })
+      .do(response => {
+        response;
+      })
+      .catch(this.handleError)*/
+
+    let path = "users/" + email + "/" + password;
+    return this.api.getAsync<User>(path);
   }
 
   /*getUsers(): Promise<User[]> {
@@ -65,7 +75,7 @@ private usersUrl = "http://localhost:4800/api/users";
     return Observable.throw(errMsg);
   }
 
-  private mapToApiResponse<T>(response: Response): Apiresponse<T>{
+  private mapToApiResponse<T>(response: Response): Apiresponse<T> {
     let retour = new Apiresponse<T>();
 
     retour.ok = response.ok;
@@ -73,7 +83,7 @@ private usersUrl = "http://localhost:4800/api/users";
     retour.statusText = response.statusText;
 
 
-    retour.data =  JSON.parse(response["_body"]);
+    retour.data = JSON.parse(response["_body"]);
 
     return retour;
   }

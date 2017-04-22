@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from '../in-memory-data.service';
+import { InMemoryDataService } from '../in-memory-data.service';
 
 // ROUTING
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,9 @@ import { HubModule } from "./hub/hub.module";
 // COMPONENTS
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './not-found.component';
+
+// API SERVICE
+import { ApiService } from "./shared/service/api.service";
 
 // BROKER
 import { UserBroker } from "./broker/user.service";
@@ -40,7 +43,10 @@ import { UserBroker } from "./broker/user.service";
     AppComponent,
     PageNotFoundComponent
   ],
-  providers: [UserBroker],
+  providers: [
+    ApiService,
+    UserBroker
+  ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
